@@ -1,7 +1,8 @@
-variable "gcp_credentials_file" {
-  description = "Path to the GCP credentials JSON file"
+variable "gcp_credentials" {
+  description = "GCP Credentials JSON"
   type        = string
-  default     = "gcp-key.json"
+  sensitive   = true
+
 }
 
 variable "project_id" {
