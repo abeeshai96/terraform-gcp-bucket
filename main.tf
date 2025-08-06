@@ -8,15 +8,13 @@ terraform {
 }
 
 provider "google" {
-  project = var.project
-  region  = var.region
+  credentials = file(var.gcp_credentials_file)
+  project     = var.project_id
+  region      = var.region
 }
 
-resource "google_storage_bucket" "bucket" {
+resource "google_storage_bucket" "default" {
   name     = var.bucket_name
   location = var.region
-}
-
-output "bucket_name" {
-  value = google_storage_bucket.bucket.name
+  force_destroy = true
 }
